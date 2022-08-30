@@ -1,0 +1,27 @@
+<h2>Customers</h2>
+<div>
+  <label for="new-customer">customer email: </label>
+  <input id="new-customer" #customerEmail />
+  <br/>
+  <label for="new-customer-pass">customer password: </label>
+  <input id="new-customer-pass" #customerPassword />
+  <br/>
+
+
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button type="button" class="add-button"
+          (click)="add(customerEmail.value,customerPassword.value);
+             customerEmail.value=''; customerPassword.value=''">
+    Add Customer
+  </button>
+</div>
+<ul class="customers">
+  <li *ngFor="let customer of mok_customers">
+    <a routerLink="/detail/{{customer.id}}">
+      <span class="badge">{{customer.id}}</span> {{customer.email}}
+    </a>
+    <button type="button" class="delete" title="delete customer"
+            (click)="delete(customer)">x</button>
+  </li>
+</ul>
+

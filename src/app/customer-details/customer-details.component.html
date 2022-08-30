@@ -1,0 +1,41 @@
+<div *ngIf="customer">
+  <h2>{{customer.email | uppercase}} Details</h2>
+  <div>id: {{customer.id}}</div>
+  <div>
+    <label for="customer-email">customer email: </label>
+    <input id="customer-email" [(ngModel)]="customer.email" placeholder="email">
+    <label for="customer-password">customer password: </label>
+    <input id="customer-password" [(ngModel)]="customer.password" placeholder="password">
+  </div>
+  <button type="button" (click)="save()">save</button>
+  <div class="purchase">
+  <div *ngFor="let purchase of customer.purchases" >
+    <div class="detail">
+    <h3>Purchase</h3>
+      <button type="button" (click)="deletePurchase(purchase)">delete</button>
+    <div>purchase id: {{purchase.id}}</div>
+    <div>date: {{purchase.date | date: 'yyyy-MM-dd h:mm:ss a'}}</div>
+    <div>amount: {{purchase.amount}}</div>
+
+    <h4>purchases details: </h4>
+    <div *ngFor="let purchaseDetail of purchase.purchaseDetails">
+      <div class="purchase-detail">
+      <div> purchase details id: {{purchaseDetail.id}}</div>
+
+      <div class="item">
+        <h5>item</h5>
+      <div>item id: {{purchaseDetail.itemId}}</div>
+     <div> item name: {{purchaseDetail.item.name}}</div>
+      <div> item price: {{purchaseDetail.item.price}}</div>
+      <div>purchase's quantity: {{purchaseDetail.quantity}}</div>
+      <hr/>
+      </div>
+    </div>
+      </div>
+
+    </div>
+  </div>
+  </div>
+
+</div>
+<button type="button" (click)="goBack()">go back</button>

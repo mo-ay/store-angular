@@ -1,0 +1,29 @@
+<h2>Items</h2>
+<div class="add_item" >
+  <label for="new-item">item name: </label>
+  <input id="new-item" #itemName />
+  <br/>
+  <label for="new-item-quantity">item quantity: </label>
+  <input id="new-item-quantity" #itemQuantity />
+  <br/>
+  <label for="new-item-price">item price: </label>
+  <input id="new-item-price" #itemPrice />
+  <br/>
+
+<button type="button" class="add-button"
+        (click)="add(itemName.value,itemQuantity.value,itemPrice.value);
+         itemName.value=''; itemQuantity.value=''; itemPrice.value='';">
+
+  Add Item
+</button>
+</div>
+
+<ul class="item">
+  <li *ngFor="let item of items">
+    <a routerLink="detail/{{item.id}}">
+      <span class="badge">{{item.id}}</span> {{item.name}}
+    </a>
+    <button type="button" class="delete" title="delete item"
+            (click)="delete(item)">x</button>
+  </li>
+</ul>
