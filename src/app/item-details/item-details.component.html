@@ -1,0 +1,16 @@
+<div *ngIf="item">
+  <h2>{{item.name | uppercase}} Details</h2>
+  <div>id: {{item.id}}</div>
+  <div>
+    <label for="item-name">item name: </label>
+    <input id="item-name" [(ngModel)]="item.name" placeholder="name">
+
+    <label for="item-price">item price: </label>
+    <input id="item-price" [(ngModel)]="item.price" placeholder="price">
+
+    <label for="item-quantity">item quantity: </label>
+    <input id="item-quantity" [(ngModel)]="item.quantity" placeholder="quantity">
+  </div>
+  <button type="button" (click)="save()">save</button>
+</div>
+<button type="button" (click)="goBack()">go back</button>

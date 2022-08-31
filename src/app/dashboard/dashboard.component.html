@@ -1,0 +1,7 @@
+<h2>chose a customer</h2>
+<div class="customer-menu">
+  <a *ngFor="let customer of customers"
+  routerLink="/purchase/{{customer.id}}">
+    {{customer.email}}
+  </a>
+</div>

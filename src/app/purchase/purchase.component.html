@@ -1,0 +1,19 @@
+<div *ngIf="customer">
+<h2> logged in as {{customer.email}}</h2>
+<ul class="item">
+  <li *ngFor="let item of items">
+    <div>
+      <span class="badge">{{item.id}}</span> {{item.name}}
+      <span class="badge">price: {{item.price}}</span>
+      <span class="badge">items left: {{item.quantity}}</span>
+    </div>
+    <label for="quantity"> quantity: </label>
+    <input id="quantity" #quantity  />
+    <button type="button" class="add" title="add item"
+            (click)="save(item.id ,quantity.value ); "> + add to cart </button>
+  </li>
+</ul>
+  <button type="button"  title="confirm the purchase" (click)="confirm()"> confirm </button>
+  <br/>
+  <button type="button"  title="cancel the purchase" (click)="goBack()"> cancel and go back </button>
+</div>
