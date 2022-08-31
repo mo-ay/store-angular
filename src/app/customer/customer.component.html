@@ -1,27 +1,32 @@
 <h2>Customers</h2>
-<div>
-  <label for="new-customer">customer email: </label>
-  <input id="new-customer" #customerEmail />
-  <br/>
+<form class="col-lg-10 border border-3   m-auto p-2">
+  <h4 class="text-center">Create new customer</h4>
+<div class="form-group">
+  <label for="exampleInputEmail1">customer email: </label>
+  <input class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" #customerEmail />
+  <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+</div>
+<div class="form-group">
   <label for="new-customer-pass">customer password: </label>
-  <input id="new-customer-pass" #customerPassword />
-  <br/>
-
+  <input class="form-control" id="new-customer-pass" #customerPassword />
+  </div>
 
   <!-- (click) passes input value to add() and then clears the input -->
-  <button type="button" class="add-button"
+  <button type="button" class="btn btn-success"
           (click)="add(customerEmail.value,customerPassword.value);
              customerEmail.value=''; customerPassword.value=''">
     Add Customer
   </button>
-</div>
-<ul class="customers">
-  <li *ngFor="let customer of mok_customers">
-    <a routerLink="/detail/{{customer.id}}">
-      <span class="badge">{{customer.id}}</span> {{customer.email}}
+</form>
+<h4 class="m-3 mt-5" >All Customers</h4>
+<ul class="list-group col-lg-5">
+  <li  class="border border-bottom list-group-item list-group-item-action d-flex justify-content-between align-items-center" *ngFor="let customer of mok_customers">
+    <span class="badge badge-secondary">customer id {{customer.id}}</span>
+    <a class="text-decoration-none link-dark d-block pl-2 pr-2" routerLink="/detail/{{customer.id}}">
+       {{customer.email}}
     </a>
-    <button type="button" class="delete" title="delete customer"
-            (click)="delete(customer)">x</button>
+    <button type="button" class="btn-close btn-danger" ngbTooltip="delete customer" placement="auto"
+            (click)="delete(customer)"></button>
   </li>
 </ul>
 

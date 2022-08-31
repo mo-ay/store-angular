@@ -1,29 +1,37 @@
 <h2>Items</h2>
-<div class="add_item" >
+<form class="col-lg-10 border border-3   m-auto p-2">
+  <h4 class="text-center">Create new Item</h4>
+  <div class="form-group">
   <label for="new-item">item name: </label>
-  <input id="new-item" #itemName />
-  <br/>
-  <label for="new-item-quantity">item quantity: </label>
-  <input id="new-item-quantity" #itemQuantity />
-  <br/>
+  <input class="form-control" id="new-item" #itemName />
+  </div>
+  <div class="form-group">
+  <label  for="new-item-quantity">item quantity: </label>
+  <input class="form-control" id="new-item-quantity" #itemQuantity />
+  </div>
+  <div class="form-group">
   <label for="new-item-price">item price: </label>
-  <input id="new-item-price" #itemPrice />
-  <br/>
+  <input class="form-control" id="new-item-price" #itemPrice />
+  </div>
 
-<button type="button" class="add-button"
+<button type="button" class="btn btn-success "
         (click)="add(itemName.value,itemQuantity.value,itemPrice.value);
          itemName.value=''; itemQuantity.value=''; itemPrice.value='';">
 
   Add Item
 </button>
-</div>
 
-<ul class="item">
-  <li *ngFor="let item of items">
-    <a routerLink="detail/{{item.id}}">
-      <span class="badge">{{item.id}}</span> {{item.name}}
+</form>
+<h4 class="m-3 mt-5" >All Items</h4>
+<ul class="list-group col-lg-5">
+  <li class="border border-bottom list-group-item  d-flex justify-content-between align-items-center"  *ngFor="let item of items">
+    <a class="text-decoration-none link-dark d-block pl-2 pr-2" routerLink="detail/{{item.id}}">
+      <span class="badge badge-secondary mr-2 ">{{item.id}}</span>
+      <span class="badge badge-success">edit</span>
+
+      {{item.name}}
     </a>
-    <button type="button" class="delete" title="delete item"
-            (click)="delete(item)">x</button>
+    <button type="button" class="btn-close btn-danger" ngbTooltip="delete item" placement="auto"
+            (click)="delete(item)"></button>
   </li>
 </ul>

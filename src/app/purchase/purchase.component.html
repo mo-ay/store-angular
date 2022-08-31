@@ -1,19 +1,24 @@
 <div *ngIf="customer">
-<h2> logged in as {{customer.email}}</h2>
-<ul class="item">
-  <li *ngFor="let item of items">
-    <div>
-      <span class="badge">{{item.id}}</span> {{item.name}}
-      <span class="badge">price: {{item.price}}</span>
-      <span class="badge">items left: {{item.quantity}}</span>
+<h2> <span class="badge badge-info">logged in as: </span>  {{customer.email}}</h2>
+  <form >
+<ul class="list-group">
+  <div class="d-flex flex-wrap align-items-center justify-content-start list-group-item-secondary m-1 list-group-item-action" *ngFor="let item of items">
+    <div class=" h5 col-lg-5">
+      <span class="badge badge-secondary">{{item.id}}</span>
+      <span class="text-uppercase" > {{item.name}}</span>
+      <span class="badge badge-success">price: {{item.price}}</span>
+      <span class="badge badge-info">items left: {{item.quantity}}</span>
     </div>
+    <div>
     <label for="quantity"> quantity: </label>
     <input id="quantity" #quantity  />
-    <button type="button" class="add" title="add item"
-            (click)="save(item.id ,quantity.value ); "> + add to cart </button>
-  </li>
+      <button type="button" class="btn-outline-success" title="add item"
+              (click)="save(item.id ,quantity.value ); "> + add to cart </button>
+    </div>
+
+  </div>
 </ul>
-  <button type="button"  title="confirm the purchase" (click)="confirm()"> confirm </button>
-  <br/>
-  <button type="button"  title="cancel the purchase" (click)="goBack()"> cancel and go back </button>
+  <button type="button" class="btn btn-success m-1" title="confirm the purchase" (click)="confirm()"> confirm </button>
+  <button type="button" class="btn btn-danger m-1"  title="cancel the purchase" (click)="goBack()"> cancel and go back </button>
+  </form>
 </div>
